@@ -1,6 +1,2 @@
-# CPRV-11H11M
-Cost Per Real View project by 11H11M
-
-
-### VisualStudio2017에서 OpenCV 4.x version 사용
-> <https://webnautes.tistory.com/1132>
+# SM-urp 학부생 전공심화 연구소모임
+#### 광고 실제 시청 여부를 판단하여 리워드를 지급하는 
