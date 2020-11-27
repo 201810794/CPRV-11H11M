@@ -31,7 +31,7 @@ int main(int argc, char *argv[])
 
 
 	if (!face.load(face_cascade) || !eye.load(eye_cascade)) {
-		cout << "Cascade ÆÄÀÏ ¿­±â ½ÇÆĞ" << endl;
+		cout << "Cascade íŒŒì¼ ì—´ê¸° ì‹¤íŒ¨" << endl;
 		return -1;
 	}
 
@@ -56,21 +56,21 @@ int main(int argc, char *argv[])
 				Mat gray;
 				cvtColor(frame, gray, CV_RGB2GRAY);
 
-				vector<Rect> face_pos; // ¾ó±¼ À§Ä¡ ÀúÀå
-				face.detectMultiScale(gray, face_pos, 1.1, 3, 0 | CASCADE_SCALE_IMAGE, Size(10, 10)); // ¾ó±¼ °ËÃâ
+				vector<Rect> face_pos; // ì–¼êµ´ ìœ„ì¹˜ ì €ì¥
+				face.detectMultiScale(gray, face_pos, 1.1, 3, 0 | CASCADE_SCALE_IMAGE, Size(10, 10)); // ì–¼êµ´ ê²€ì¶œ
 
-				// ¾ó±¼ ¿µ¿ª Ç¥½Ã
+				// ì–¼êµ´ ì˜ì—­ í‘œì‹œ
 				for (int i = 0; i < (int)face_pos.size(); i++) {
 					rectangle(frame, face_pos[i], Scalar(0, 255, 0), 2);
 				}
 
 				for (int i = 0; i < (int)face_pos.size(); i++) {
-					vector<Rect> eye_pos; // ´« À§Ä¡ ÀúÀå
+					vector<Rect> eye_pos; // ëˆˆ ìœ„ì¹˜ ì €ì¥
 
-					Mat roi = gray(face_pos[i]); // °ü½É¿µ¿ª ¼³Á¤
-					eye.detectMultiScale(roi, eye_pos, 1.1, 3, 0 | CASCADE_SCALE_IMAGE, Size(10, 10)); // ´« °ËÃâ
+					Mat roi = gray(face_pos[i]); // ê´€ì‹¬ì˜ì—­ ì„¤ì •
+					eye.detectMultiScale(roi, eye_pos, 1.1, 3, 0 | CASCADE_SCALE_IMAGE, Size(10, 10)); // ëˆˆ ê²€ì¶œ
 
-					// ´« ¿µ¿ª Ç¥½Ã
+					// ëˆˆ ì˜ì—­ í‘œì‹œ
 					for (int j = 0; j < (int)eye_pos.size(); j++) {
 						Point center(face_pos[i].x + eye_pos[j].x + (eye_pos[j].width / 2),
 							face_pos[i].y + eye_pos[j].y + (eye_pos[j].height / 2));
@@ -86,8 +86,8 @@ int main(int argc, char *argv[])
 			}
 
 		}
-		namedWindow("°ËÃâ");
-		imshow("°ËÃâ", frame);
+		namedWindow("ê²€ì¶œ");
+		imshow("ê²€ì¶œ", frame);
 		if (waitKey(30) >= 0) break;
 
 	}
